@@ -38,6 +38,7 @@ const index = ({ props, navigation }) => {
     const [Data, setData] = useState([]);
     const [city, setCity] = useState(null);
     const [showGraph, setShowGraph] = useState(false);
+    const [showBtn, setShowBtn] = useState(false);
     const [cityData, setCityData] = useState([]);
     useEffect(() => {
 
@@ -92,7 +93,7 @@ const index = ({ props, navigation }) => {
         responseJson?.list.forEach((element, index) => {
             console.log("ele", element);
             if (index < 5) {
-                textBottom.push((element.main.temp - 273.15).toLocaleString() + "°")
+                textBottom.push((parseInt(element.main.temp - 273.15)) + "°")
                 values.push((element.main.temp - 273.15))
             }
 
@@ -135,6 +136,8 @@ const index = ({ props, navigation }) => {
                         setCity(item.name)
                         GetWeather(item)
                         setCityData(item)
+                        setCity(item.name)
+                        setShowBtn(true)
                         
                     }
 
@@ -209,7 +212,8 @@ const index = ({ props, navigation }) => {
                 Settings={Settings}
                 showGraph={showGraph} 
             />
-            <View style={{ alignItems: 'flex-end', width: '100%' }}>
+          {showBtn?(
+                <View style={{ alignItems: 'flex-end', width: '100%' }}>
                 <TouchableOpacity
                 onPress={()=>navigation.navigate("Map",{data:cityData})}
                 >
@@ -220,6 +224,7 @@ const index = ({ props, navigation }) => {
                     </View>
                 </TouchableOpacity>
             </View>
+          ):(null)}
         </SafeAreaView>
     );
 }

@@ -28,7 +28,7 @@ const Card = (props) => {
                     <View style={{ paddingVertical: 2, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
                             <Text style={styles.textHeading}>Temprature</Text>
-                            <Text style={styles.text}>{kToCel?.toLocaleString()} °C</Text>
+                            <Text style={styles.text}>{parseInt(kToCel)} °C</Text>
                         </View>
                         <Image
                             style={{
@@ -42,7 +42,7 @@ const Card = (props) => {
                     </View>
                     <View style={{ paddingVertical: 2 }}>
                         <Text style={styles.textHeading}>Temprature Feel Like</Text>
-                        <Text style={styles.text}>{fkToCel?.toLocaleString()} °C</Text>
+                        <Text style={styles.text}>{parseInt(fkToCel)} °C</Text>
                     </View>
                     <View style={{ paddingVertical: 2 }}>
                         <Text style={styles.textHeading}>Description</Text>
